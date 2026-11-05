@@ -1,0 +1,14 @@
+group: squad_sv_gen_svbv2
+task:
+  - squad_sv_gen_svbv2_p0
+  - squad_sv_gen_svbv2_p1
+  - squad_sv_gen_svbv2_p2
+  - squad_sv_gen_svbv2_p3
+  - squad_sv_gen_svbv2_p4
+aggregate_metric_list:
+  - metric: f1
+    aggregation: mean
+    weight_by_size: true
+  - metric: exact_match
+    aggregation: mean
+    weight_by_size: true

@@ -1,0 +1,4 @@
+task: finbench_emotions_1k_sv_mcf_svbv2_p4
+include: _finbench_emotions_1k_sv_mcf_svbv2_yaml
+description: "Vilken känsla (förvåning, glädje, avsky, förtroende, förväntan, rädsla, sorg, ilska) förekommer i texterna?\n\n"
+doc_to_text: "Text: {{ query }}\nVal:"

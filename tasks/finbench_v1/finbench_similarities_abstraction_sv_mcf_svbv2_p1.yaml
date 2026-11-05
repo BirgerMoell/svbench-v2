@@ -1,0 +1,3 @@
+task: finbench_similarities_abstraction_sv_mcf_svbv2_p1
+include: _finbench_similarities_abstraction_sv_mcf_svbv2_yaml
+doc_to_text: "{{ word_0 }} och {{ word_1 }} har en likhet.\nVälj rätt alternativ:\n{% for s in multiple_choice_targets %} alternativ: {{ s }}\n{% endfor %}Svar:"

@@ -1,0 +1,6 @@
+[analogies] merged 130/130
+[emotions_1k] merged 1000/1000
+[general_knowledge] idx 17: 2 correct options in the Finnish source; kept, scoring uses the first target as in Finnish
+[general_knowledge] merged 70/70
+[hhh_alignment] merged 221/221
+[similarities_abstraction] merged 76/76

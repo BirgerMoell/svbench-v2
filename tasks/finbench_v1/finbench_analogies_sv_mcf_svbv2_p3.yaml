@@ -1,0 +1,4 @@
+task: finbench_analogies_sv_mcf_svbv2_p3
+include: _finbench_analogies_sv_mcf_svbv2_yaml
+description: "Lös följande ordanalogier.\n\n"
+doc_to_text: "Om {{ reference_1 }} hör ihop med {{ reference_2 }}, vilket ord hör ihop med {{ known_target }}?\n{% for s in multiple_choice_targets %} {{ choice_prefix }} {{ s }}\n{% endfor %}Svar:"

@@ -1,0 +1,11 @@
+General (idx 40-129): Finnish morphology analogies (adjective-adverb, antonyms, comparative/superlative, participles, tense, person, plural) cannot be translated literally. Swedish equivalents with the same relation were chosen; position of the correct choice is unchanged. Distractors are other inflected/derived forms of the same word (plural/definite, comparative, superlative, noun forms, etc.) since Swedish lacks case endings.
+32-33: aviomies -> "make", vaimo -> "fru" (to keep distinct from mies -> "man").
+31/36/32: setä -> "farbror", täti -> "faster" used consistently; isoisä -> "morfar", isoäiti -> "mormor".
+40-59: Swedish adverbs formed with -t (same as neuter adjective). Items rebuilt with Swedish words close in meaning (e.g. hämmästyttävä -> förvånansvärd, valitettava -> beklaglig, vastahakoinen -> motvillig, mahdollinen/mahdollisesti -> sannolik/sannolikt, hiljainen -> ljudlös, onnekas -> lyckosam) because many Swedish adverbs equal the base adjective.
+66-79: reference words partly replaced for natural Swedish superlatives (ripeä -> rask, mahtava -> mäktig, maukas -> smakrik, huono -> dålig with irregular sämst).
+80-89, 120-129: Swedish verbs do not inflect by person, so pronouns were added ("han spelar", "vi spelar", "jag sjöng"); passives rendered as "det X-s"/"man X-ade"; conditional as "skulle + infinitive"; present participles end in -ande.
+90-99: nationality adjectives (e.g. thailändsk); distractors: neuter, plural, genitive, "mer X" forms. Moldova -> Moldavien, Sveitsi -> Schweiz, Kambodža -> Kambodja.
+111: ref euro/eurot replaced by krona/kronor (Swedish "euro" plural is invariant).
+118: ref lapsi/lapset replaced by pojke/pojkar (barn/barn is invariant).
+112-119: nouns' plural distractors adapted to definite/genitive forms.
+25: Makedonia -> Nordmakedonien. 22: Valko-Venäjä -> Belarus. 2: Helsinki -> Helsingfors.

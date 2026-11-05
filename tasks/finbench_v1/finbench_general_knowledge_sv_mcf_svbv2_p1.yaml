@@ -1,0 +1,3 @@
+task: finbench_general_knowledge_sv_mcf_svbv2_p1
+include: _finbench_general_knowledge_sv_mcf_svbv2_yaml
+doc_to_text: "Svara på frågan genom att välja rätt alternativ.\nFråga: {{ query }}\n{% for s in multiple_choice_targets %} alternativ: {{ s }}\n{% endfor %}Rätt svar:"

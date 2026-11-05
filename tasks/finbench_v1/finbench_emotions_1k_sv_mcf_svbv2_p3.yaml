@@ -1,0 +1,3 @@
+task: finbench_emotions_1k_sv_mcf_svbv2_p3
+include: _finbench_emotions_1k_sv_mcf_svbv2_yaml
+doc_to_text: "Vilken av grundkänslorna (förvåning, glädje, avsky, förtroende, förväntan, rädsla, sorg, ilska) beskriver bäst meningen \"{{ query }}\"?\nSvar:"

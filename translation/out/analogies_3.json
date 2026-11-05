@@ -1,0 +1,12 @@
+[
+{"idx": 120, "known_target": "han förbättrar", "reference_1": "han spelar", "reference_2": "vi spelar", "choices": ["som bör förbättras", "det förbättras", "genom att förbättra", "vi skulle förbättra", "vi förbättrar"]},
+{"idx": 121, "known_target": "han äter", "reference_1": "han blandar", "reference_2": "vi blandar", "choices": ["vi skulle äta", "jag äter", "vi äter", "vi åt", "det äts"]},
+{"idx": 122, "known_target": "han sjunger", "reference_1": "han förutspår", "reference_2": "vi förutspår", "choices": ["vi skulle sjunga", "vi sjöng", "vi sjunger", "man sjöng", "man sjunger"]},
+{"idx": 123, "known_target": "han spelar", "reference_1": "han minskar", "reference_2": "vi minskar", "choices": ["man skulle spela", "man spelar", "vi spelar", "vi spelade", "vi skulle spela"]},
+{"idx": 124, "known_target": "han minskar", "reference_1": "han skriker", "reference_2": "vi skriker", "choices": ["som bör minskas", "genom att minska", "vi minskar", "det minskas", "vi skulle minska"]},
+{"idx": 125, "known_target": "han genomför", "reference_1": "han lyssnar", "reference_2": "vi lyssnar", "choices": ["vi genomför", "vi genomförde", "du genomför", "genomförande", "det genomförs"]},
+{"idx": 126, "known_target": "han bromsar", "reference_1": "han tänker", "reference_2": "vi tänker", "choices": ["det bromsades", "det bromsas", "vi bromsar", "jag bromsar", "vi bromsade"]},
+{"idx": 127, "known_target": "han säger", "reference_1": "han skapar", "reference_2": "vi skapar", "choices": ["vi säger", "ni säger", "vi sa", "vi skulle säga", "man säger"]},
+{"idx": 128, "known_target": "han söker", "reference_1": "han talar", "reference_2": "vi talar", "choices": ["jag söker", "vi söker", "man söker", "vi skulle söka", "man sökte"]},
+{"idx": 129, "known_target": "han simmar", "reference_1": "han säger", "reference_2": "vi säger", "choices": ["simmande", "man simmade", "simmat", "vi simmar", "jag simmar"]}
+]

@@ -1,0 +1,3 @@
+task: squad_sv_gen_svbv2_p0
+include: _squad_sv_gen_svbv2_yaml
+doc_to_text: "Rubrik: {{ title }}\n\nText: {{ context }}\n\nFråga: {{ question }}\nSvar:"

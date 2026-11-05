@@ -1,0 +1,27 @@
+general_knowledge
+52-57, 69: number formatting. Source uses English-style "1,000" / "-273.15" (comma = thousands). Converted to Swedish convention ("1 000", "-273,15") so that "1,000" is not read as one. Check that the correct answer is still the intended one.
+51: choice "Sol" translated "Solen" (Sun); "Kuu" -> "Månen". Odd distractor list kept as in source.
+53: "aari" -> "ar" (the unit are); rarely used in Sweden, correct but old-fashioned.
+61: "world's longest river" is contested (Nile vs Amazon); source answer kept unchanged.
+66: "Olympos" -> "Olympen" (Mount Olympus), kept as in source although Olympus Mons is on Mars.
+20: "karhukainen" -> "björndjur" (tardigrade). 60: "kauris" -> "rådjur".
+14/15/16: "jalat" = "benen" in 14/15 and "fötterna" in 16 (the answer is the feet). "jalkaterä" = "foten".
+12, 11: "typpeä" etc. kept as source (gas as distractor for a liquid question).
+38: "ristikko" translated "galler" (lattice); no ideal Swedish match, it is a distractor only.
+
+similarities_abstraction
+21: "stereokuulokkeet"/"kaiutin" -> "hörlurar"/"högtalare" would both start with H and make the distractor "samma bokstav" true in Swedish. Changed word_0 to "stereolurar" so the distractor stays false. Human check.
+33: "hattu"/"huppu" -> "hatt"/"huva" would both start with H and break the distractor "samma bokstav". Changed word_1 to "kapuschong" (hood). Human check.
+11: "rock and roll"/"rap": both R in Swedish too, same as source (both R-options true in source as well).
+22: "pesäpallo" is a Finnish sport (Swedish: brännboll is a different game; pesäpallo is used as a loan). Translated "pesäpallo-slagträ"; human may replace with baseball.
+72: "markka" -> "finsk mark" (Finnish markka; plain "mark" is ambiguous with German mark). Finland-specific; human may adapt to "krona".
+64: "Reinot" kept as "Reino-skor" (Finnish rubber footwear brand/colloquial term, probably Crocs-like); unclear original, human check.
+47: "Quetzalcotl" corrected to "Quetzalcoatl"; "Sleipnir" -> "Sleipner".
+54: chess terms "kuningatar"/"lähetti" -> "dam"/"löpare" (queen/bishop). Correct answer (diagonal movement) unchanged.
+56: "determinantti" -> "determinativ" (English "determiner"; Swedish also "determinerare").
+36: "nauris" -> "rova" (turnip), not "kålrot".
+44: "nauta" -> "ko".
+46: "jalkahoitaja" -> "fotvårdsspecialist"; distractor "skolämnen" kept as in source.
+55: typo "Molemmissaa" fixed. 29: near-duplicate options "teräväkärkisiä"/"teräviä" kept distinct ("har vassa spetsar"/"är vassa").
+62: "Molemmat näyttävät ihmiseltä"/"muistuttavat ihmistä" near-duplicate in source; kept as two distinct Swedish phrasings.
+7: "paikalliset aamu-uutiset" -> "lokala morgonnyheter".

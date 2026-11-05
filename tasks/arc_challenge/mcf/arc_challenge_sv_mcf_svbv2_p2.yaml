@@ -1,0 +1,3 @@
+task: arc_challenge_sv_mcf_svbv2_p2
+include: _arc_challenge_sv_mcf_svbv2_yaml
+doc_to_text: "Fråga: {{ question }}\nVälj rätt alternativ:\n{% for s in choice_list %}{{ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[loop.index0] }}. {{ s }}\n{% endfor %}Rätt alternativ är:"

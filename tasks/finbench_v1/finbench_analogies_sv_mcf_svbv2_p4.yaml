@@ -1,0 +1,4 @@
+task: finbench_analogies_sv_mcf_svbv2_p4
+include: _finbench_analogies_sv_mcf_svbv2_yaml
+description: "Välj det ord bland alternativen som fullbordar meningarna:\n\n"
+doc_to_text: "\"Ordet {{ reference_1 }} är för {{ reference_2 }} detsamma som {{ known_target }} är för ___\".\n{% for s in multiple_choice_targets %} {{ choice_prefix }} {{ s }}\n{% endfor %}Val:"

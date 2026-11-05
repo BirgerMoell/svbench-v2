@@ -1,0 +1,3 @@
+task: finbench_similarities_abstraction_sv_mcf_svbv2_p2
+include: _finbench_similarities_abstraction_sv_mcf_svbv2_yaml
+doc_to_text: "Hur hänger {{ word_0 }} och {{ word_1 }} ihop? Välj den lämpligaste förklaringen.\n{% for s in multiple_choice_targets %} alternativ: {{ s }}\n{% endfor %}Svar:"

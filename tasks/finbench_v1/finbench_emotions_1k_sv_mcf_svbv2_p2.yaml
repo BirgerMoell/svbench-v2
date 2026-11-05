@@ -1,0 +1,3 @@
+task: finbench_emotions_1k_sv_mcf_svbv2_p2
+include: _finbench_emotions_1k_sv_mcf_svbv2_yaml
+doc_to_text: "Vilken känslokategori hör följande mening till?\nMening:\n\"{{ query }}\"\nKategorier: förvåning, glädje, avsky, förtroende, förväntan, rädsla, sorg, ilska.\nKategori:"

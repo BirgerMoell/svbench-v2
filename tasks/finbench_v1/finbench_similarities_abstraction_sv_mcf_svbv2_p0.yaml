@@ -1,0 +1,4 @@
+task: finbench_similarities_abstraction_sv_mcf_svbv2_p0
+include: _finbench_similarities_abstraction_sv_mcf_svbv2_yaml
+description: "Välj det bästa svaret på frågan bland följande alternativ.\n\n"
+doc_to_text: "{{ input_prefix }} Berätta för mig hur {{ word_0 }} och {{ word_1 }} liknar varandra.\n{% for s in multiple_choice_targets %} alternativ: {{ s }}\n{% endfor %}{{ output_prefix }}"

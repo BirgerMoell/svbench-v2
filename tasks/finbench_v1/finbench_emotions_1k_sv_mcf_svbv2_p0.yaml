@@ -1,0 +1,4 @@
+task: finbench_emotions_1k_sv_mcf_svbv2_p0
+include: _finbench_emotions_1k_sv_mcf_svbv2_yaml
+description: "Avgör grundkänslan i följande textstycken genom att välja en av följande: förvåning, glädje, avsky, förtroende, förväntan, rädsla, sorg, ilska.\n\n"
+doc_to_text: "Text: {{ query }}\nGrundkänsla:"

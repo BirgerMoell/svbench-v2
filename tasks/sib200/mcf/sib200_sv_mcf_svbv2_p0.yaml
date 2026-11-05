@@ -1,0 +1,3 @@
+task: sib200_sv_mcf_svbv2_p0
+include: _sib200_sv_mcf_svbv2_yaml
+doc_to_text: "Är textens ämne \"politik\", \"underhållning\", \"vetenskap/teknik\", \"sport\", \"resor\", \"hälsa\" eller \"geografi\"?\n{{ text }}\n"

@@ -1,0 +1,3 @@
+task: scandisent_sv_mcf_svbv2_p2
+include: _scandisent_sv_mcf_svbv2_yaml
+doc_to_text: "Klassificera följande recension som antingen positiv eller negativ.\nText: {{ query }}\nTon:"

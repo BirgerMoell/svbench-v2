@@ -1,0 +1,3 @@
+task: arc_challenge_sv_mcf_svbv2_p0
+include: _arc_challenge_sv_mcf_svbv2_yaml
+doc_to_text: "Vilket är det bästa svaret på frågan: {{ question }}\n{% for s in choice_list %} {{ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[loop.index0] }} {{ s }}\n{% endfor %}Svar:"

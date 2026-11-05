@@ -1,0 +1,3 @@
+task: scandisent_sv_mcf_svbv2_p3
+include: _scandisent_sv_mcf_svbv2_yaml
+doc_to_text: "Recension: {{ query }}\nÄr recensionens ton \"positiv\" eller \"negativ\"?\nTon:"

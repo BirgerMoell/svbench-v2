@@ -1,0 +1,3 @@
+task: belebele_swe_Latn_mcf_svbv2_p4
+include: _belebele_swe_Latn_mcf_svbv2_yaml
+doc_to_text: "Svara på frågan \"{{question}}\" med hjälp av enbart texten: \"{{flores_passage}}\".\n Välj en av följande bokstäver.\n A. {{mc_answer1}}\n B. {{mc_answer2}}\n C. {{mc_answer3}}\n D. {{mc_answer4}}\n Rätt alternativ: "

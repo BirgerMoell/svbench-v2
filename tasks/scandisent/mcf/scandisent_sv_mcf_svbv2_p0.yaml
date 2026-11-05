@@ -1,0 +1,3 @@
+task: scandisent_sv_mcf_svbv2_p0
+include: _scandisent_sv_mcf_svbv2_yaml
+doc_to_text: "Är känslan i texten \"positiv\" eller \"negativ\"?\nText: {{ query }}\nKänsla:"

@@ -1,0 +1,3 @@
+task: squad_sv_gen_svbv2_p2
+include: _squad_sv_gen_svbv2_yaml
+doc_to_text: "Läs följande text och svara på frågan. Ämne: {{ title }}\nText: {{ context }}\nFråga: {{ question }}\nSvar:"

@@ -1,0 +1,3 @@
+task: finbench_analogies_sv_mcf_svbv2_p1
+include: _finbench_analogies_sv_mcf_svbv2_yaml
+doc_to_text: "{{ input_prefix }} Vilket ord förhåller sig till ordet {{ known_target }} som ordet {{ reference_1 }} förhåller sig till ordet {{ reference_2 }}?\n{% for s in multiple_choice_targets %} {{ choice_prefix }} {{ s }}\n{% endfor %}{{ output_prefix }}"

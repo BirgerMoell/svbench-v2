@@ -1,0 +1,4 @@
+task: finbench_general_knowledge_sv_mcf_svbv2_p0
+include: _finbench_general_knowledge_sv_mcf_svbv2_yaml
+description: "Välj rätt svarsalternativ på följande allmänbildningsfrågor:\n\n"
+doc_to_text: "{{ query }}\n{% for s in multiple_choice_targets %} alternativ: {{ s }}\n{% endfor %}Ditt svar:"

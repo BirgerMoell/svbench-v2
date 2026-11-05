@@ -1,0 +1,3 @@
+task: scandisent_sv_mcf_svbv2_p1
+include: _scandisent_sv_mcf_svbv2_yaml
+doc_to_text: "Avgör textens känsloton. Svara antingen \"positiv\" eller \"negativ\".\nText: {{ query }}\nKänsloton:"

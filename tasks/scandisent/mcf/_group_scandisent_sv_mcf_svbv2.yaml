@@ -1,0 +1,14 @@
+group: scandisent_sv_mcf_svbv2
+task:
+  - scandisent_sv_mcf_svbv2_p0
+  - scandisent_sv_mcf_svbv2_p1
+  - scandisent_sv_mcf_svbv2_p2
+  - scandisent_sv_mcf_svbv2_p3
+  - scandisent_sv_mcf_svbv2_p4
+aggregate_metric_list:
+  - metric: acc
+    aggregation: mean
+    weight_by_size: true
+  - metric: acc_norm
+    aggregation: mean
+    weight_by_size: true

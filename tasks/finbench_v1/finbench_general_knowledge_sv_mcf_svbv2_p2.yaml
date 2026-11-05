@@ -1,0 +1,3 @@
+task: finbench_general_knowledge_sv_mcf_svbv2_p2
+include: _finbench_general_knowledge_sv_mcf_svbv2_yaml
+doc_to_text: "Vilket av följande är rätt svar på frågan \"{{ query }}\"?\n{% for s in multiple_choice_targets %} {{ choice_prefix }} {{ s }}\n{% endfor %}Svar:"

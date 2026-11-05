@@ -1,0 +1,3 @@
+task: arc_challenge_sv_mcf_svbv2_p3
+include: _arc_challenge_sv_mcf_svbv2_yaml
+doc_to_text: "Här är en fråga och flera svarsalternativ. Välj det rätta.\nFråga: {{ question }}\n{% for s in choice_list %}({{ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[loop.index0] }}) {{ s }}\n{% endfor %}Rätt svar är:"
