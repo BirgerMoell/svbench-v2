@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SV-bench-v2: Swedish FIN-bench-v2 port</title>
-<meta name="description" content="A draft Swedish port of FIN-bench-v2 with first baseline results.">
+<meta name="description" content="A draft Swedish port of FIN-bench-v2 with baseline results for several models.">
 <style>
 :root{--bg:#fff;--ink:#1f2328;--muted:#656d76;--line:#e4e7eb;--card:#f6f8fa;--accent:#2f6db5;--warn:#9a6700}
 @media (prefers-color-scheme:dark){:root{--bg:#0d1117;--ink:#e6edf3;--muted:#8b949e;--line:#30363d;--card:#161b22;--accent:#58a6ff;--warn:#d29922}}
@@ -19,7 +19,8 @@ code,pre{background:var(--card);border:1px solid var(--line);border-radius:6px}c
 <p class="lede">A Swedish port of <a href="https://arxiv.org/abs/2512.13330">FIN-bench-v2</a> (Kytöniemi et al., TurkuNLP): 12 tasks, five hand-written prompt variants each, run with the LM Evaluation Harness.
 Unofficial community port, not affiliated with TurkuNLP.</p>
 <div class="hero">
-<div class="stat"><b>0.817</b><span>prelude-base (Swedish), mean over 12 tasks</span></div>
+<div class="stat"><b>0.817</b><span>prelude-base anneal2t (Swedish), mean over 12 tasks</span></div>
+<div class="stat"><b>9</b><span>models evaluated</span></div>
 <div class="stat"><b>0.790</b><span>prelude (Finnish suite), same aggregation</span></div>
 <div class="stat"><b>12</b><span>tasks, 5-shot, 5 prompts each</span></div>
 </div>
@@ -27,19 +28,23 @@ Unofficial community port, not affiliated with TurkuNLP.</p>
 
 <h2>Finnish chart with the Swedish result</h2>
 <p>Bars are the mean of the 12 per-task scores (acc_norm, F1 for SQuAD; max over the five prompts per task, as in the Finnish table). Finnish numbers are from the FIN-bench-v2 authors' table.</p>
-<img src="chart_finnish_vs_swedish.png" alt="Bar chart of mean score over 12 tasks for Finnish models plus the Swedish prelude-base bar">
+<img src="chart_finnish_vs_swedish.png" alt="Bar chart of mean score over 12 tasks for Finnish models plus Swedish bars for the evaluated models">
 
 <h2>Per task: Finnish vs Swedish prelude</h2>
-<img src="chart_prelude_per_task.png" alt="Grouped bars comparing Finnish prelude and Swedish prelude-base per task">
+<img src="chart_prelude_per_task.png" alt="Grouped bars comparing Finnish prelude and Swedish prelude-base (anneal2t) per task">
 <p class="note">Not a like-for-like comparison per task: different datasets, possibly different checkpoints, Swedish analogies were partly rebuilt (Finnish case-ending items have no Swedish equivalent), Swedish SQuAD is filtered to answers found in the context, and GoldenSwag, ARC and TruthfulQA are unreviewed machine translations.</p>
 
-<h2>Swedish results</h2>
+<h2>Leaderboard</h2>
+<p>Max over the five prompts per task, 5-shot; Mean is over the 12 tasks. Gated models (EuroLLM, GPT-SW3, Gemma) were not run.</p>
+<div class="tw"><table><thead><tr><th>Model</th><th class=n>Mean</th><th class=n>ARC-Challenge</th><th class=n>Belebele</th><th class=n>Analogies</th><th class=n>Emotions</th><th class=n>Gen. knowl.</th><th class=n>HHH</th><th class=n>Similarities</th><th class=n>GoldenSwag</th><th class=n>TruthfulQA MC1</th><th class=n>ScandiSent</th><th class=n>SIB-200</th><th class=n>SQuAD</th></tr></thead><tbody><tr><td>openeurollm/prelude-base @ anneal2t_multilingual1_dominant1_iter_1192093</td><td class=n><b>0.817</b></td><td class=n>0.85</td><td class=n>0.88</td><td class=n>0.95</td><td class=n>0.80</td><td class=n>0.89</td><td class=n>0.80</td><td class=n>0.93</td><td class=n>0.72</td><td class=n>0.37</td><td class=n>0.98</td><td class=n>0.86</td><td class=n>0.78</td></tr><tr><td>Qwen/Qwen3-8B-Base</td><td class=n><b>0.800</b></td><td class=n>0.86</td><td class=n>0.89</td><td class=n>0.97</td><td class=n>0.73</td><td class=n>0.87</td><td class=n>0.81</td><td class=n>0.83</td><td class=n>0.55</td><td class=n>0.40</td><td class=n>0.98</td><td class=n>0.89</td><td class=n>0.81</td></tr><tr><td>openeurollm/prelude-base @ anneal300b iter_0989075</td><td class=n><b>0.778</b></td><td class=n>0.77</td><td class=n>0.83</td><td class=n>0.89</td><td class=n>0.76</td><td class=n>0.86</td><td class=n>0.74</td><td class=n>0.83</td><td class=n>0.71</td><td class=n>0.36</td><td class=n>0.98</td><td class=n>0.84</td><td class=n>0.76</td></tr><tr><td>swiss-ai/Apertus-8B-2509</td><td class=n><b>0.764</b></td><td class=n>0.74</td><td class=n>0.81</td><td class=n>0.85</td><td class=n>0.74</td><td class=n>0.86</td><td class=n>0.72</td><td class=n>0.79</td><td class=n>0.71</td><td class=n>0.40</td><td class=n>0.98</td><td class=n>0.80</td><td class=n>0.78</td></tr><tr><td>Qwen/Qwen2.5-7B</td><td class=n><b>0.763</b></td><td class=n>0.78</td><td class=n>0.85</td><td class=n>0.87</td><td class=n>0.67</td><td class=n>0.84</td><td class=n>0.79</td><td class=n>0.86</td><td class=n>0.47</td><td class=n>0.41</td><td class=n>0.97</td><td class=n>0.85</td><td class=n>0.80</td></tr><tr><td>openeurollm/prelude-base @ pre-anneal iter_0953312</td><td class=n><b>0.718</b></td><td class=n>0.67</td><td class=n>0.75</td><td class=n>0.77</td><td class=n>0.71</td><td class=n>0.81</td><td class=n>0.66</td><td class=n>0.75</td><td class=n>0.64</td><td class=n>0.35</td><td class=n>0.98</td><td class=n>0.77</td><td class=n>0.74</td></tr><tr><td>BSC-LT/salamandra-7b</td><td class=n><b>0.664</b></td><td class=n>0.58</td><td class=n>0.49</td><td class=n>0.75</td><td class=n>0.67</td><td class=n>0.83</td><td class=n>0.64</td><td class=n>0.78</td><td class=n>0.63</td><td class=n>0.33</td><td class=n>0.98</td><td class=n>0.76</td><td class=n>0.52</td></tr><tr><td>marin-community/marin-8b-base</td><td class=n><b>0.654</b></td><td class=n>0.54</td><td class=n>0.79</td><td class=n>0.68</td><td class=n>0.52</td><td class=n>0.69</td><td class=n>0.64</td><td class=n>0.64</td><td class=n>0.45</td><td class=n>0.36</td><td class=n>0.98</td><td class=n>0.76</td><td class=n>0.78</td></tr><tr><td>allenai/OLMo-2-1124-7B</td><td class=n><b>0.568</b></td><td class=n>0.37</td><td class=n>0.64</td><td class=n>0.61</td><td class=n>0.44</td><td class=n>0.59</td><td class=n>0.60</td><td class=n>0.58</td><td class=n>0.34</td><td class=n>0.30</td><td class=n>0.97</td><td class=n>0.67</td><td class=n>0.71</td></tr></tbody></table></div>
+
+<h2>Per-prompt detail: prelude-base (anneal2t)</h2>
 <p>Model: <code>openeurollm/prelude-base @ anneal2t_multilingual1_dominant1_iter_1192093</code>. 5-shot. <b>Max</b> is the reported score (max over prompts); the last numeric column lists the five prompt variants p0&ndash;p4.</p>
 <div class="tw"><table><thead><tr><th>Task</th><th class=n>Max</th><th class=n>Mean</th><th class=n>p0 p1 p2 p3 p4</th><th>Source</th><th>Caveat</th></tr></thead><tbody>
 <tr><td>ARC-Challenge</td><td class=n><b>0.846</b></td><td class=n>0.812</td><td class='n pp'>0.83 0.71 0.84 0.85 0.83</td><td>occiglot/arcX (sv)</td><td class=cav>machine-translated, unreviewed</td></tr><tr><td>Belebele</td><td class=n><b>0.879</b></td><td class=n>0.860</td><td class='n pp'>0.88 0.88 0.87 0.87 0.80</td><td>facebook/belebele swe_Latn</td><td class=cav>human translation</td></tr><tr><td>Analogies</td><td class=n><b>0.946</b></td><td class=n>0.909</td><td class='n pp'>0.91 0.84 0.92 0.95 0.93</td><td>FIN-bench v1, translated from Finnish</td><td class=cav>idx 40-129 rebuilt for Swedish; not comparable</td></tr><tr><td>Emotions 1k</td><td class=n><b>0.797</b></td><td class=n>0.760</td><td class='n pp'>0.73 0.79 0.77 0.80 0.71</td><td>FIN-bench v1 (XED), translated from Finnish</td><td class=cav>LLM translation, unreviewed</td></tr><tr><td>General knowledge</td><td class=n><b>0.886</b></td><td class=n>0.874</td><td class='n pp'>0.87 0.87 0.89 0.87 0.87</td><td>FIN-bench v1, translated from Finnish</td><td class=cav>a few Finland-specific facts</td></tr><tr><td>HHH alignment</td><td class=n><b>0.801</b></td><td class=n>0.771</td><td class='n pp'>0.75 0.80 0.77 0.78 0.75</td><td>FIN-bench v1, translated from Finnish</td><td class=cav>some items adapted</td></tr><tr><td>Similarities abstraction</td><td class=n><b>0.934</b></td><td class=n>0.924</td><td class='n pp'>0.93 0.91 0.93 0.91 0.93</td><td>FIN-bench v1, translated from Finnish</td><td class=cav>two distractors adapted</td></tr><tr><td>GoldenSwag</td><td class=n><b>0.718</b></td><td class=n>0.717</td><td class='n pp'>0.71 0.72 0.72 0.72 0.72</td><td>LumiOpen/opengpt-x_goldenswagx (SV)</td><td class=cav>machine-translated, unreviewed</td></tr><tr><td>TruthfulQA MC1</td><td class=n><b>0.373</b></td><td class=n>0.363</td><td class='n pp'>0.36 0.36 0.36 0.37 0.35</td><td>LumiOpen/opengpt-x_truthfulqax (mc_SV)</td><td class=cav>machine-translated</td></tr><tr><td>ScandiSent</td><td class=n><b>0.980</b></td><td class=n>0.977</td><td class='n pp'>0.98 0.98 0.97 0.98 0.97</td><td>ScandiSent sv, 2048-item test subset</td><td class=cav>native Swedish reviews</td></tr><tr><td>SIB-200</td><td class=n><b>0.858</b></td><td class=n>0.782</td><td class='n pp'>0.80 0.63 0.86 0.84 0.79</td><td>Davlan/sib200 swe_Latn</td><td class=cav>human translation</td></tr><tr><td>SQuAD (F1)</td><td class=n><b>0.781</b></td><td class=n>0.772</td><td class='n pp'>0.77 0.77 0.77 0.78 0.77</td><td>SQuAD v2 Swedish (Google Translate)</td><td class=cav>1000 items, answer-in-context filtered</td></tr>
 <tr><td><b>Mean over tasks</b></td><td class=n><b>0.817</b></td><td></td><td></td><td></td><td></td></tr>
 </tbody></table></div>
-<p>Prompt choice matters: SIB-200 ranges 0.63&ndash;0.86 and ARC 0.71&ndash;0.85 across prompt variants, which taking the max hides.</p>
+<p>Prompt choice matters (prelude-base anneal2t): SIB-200 ranges 0.63&ndash;0.86 and ARC 0.71&ndash;0.85 across prompt variants, which taking the max hides.</p>
 
 <h2>Run it</h2>
 <pre><code>git clone https://github.com/BirgerMoell/svbench-v2 &amp;&amp; cd svbench-v2
@@ -52,7 +57,7 @@ python aggregate.py results/*/results.json</code></pre>
 
 <h2>Known limitations</h2>
 <ul>
-<li>Only one model has been evaluated so far.</li>
+<li>9 open base models and checkpoints evaluated, single run each; differences of a point or two are within noise. Gated models were not run.</li>
 <li>All 35 Swedish prompts and the translations of the five FIN-bench v1 tasks were written by an LLM (Claude), translated from the Finnish data, and need native-speaker review.</li>
 <li>Analogies items 40&ndash;129 test Finnish morphology; they were rebuilt with Swedish forms, so that task is a new Swedish task, not a translation.</li>
 <li>Translators' notes are in <code>translation/out/</code>.</li>

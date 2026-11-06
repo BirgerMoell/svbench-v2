@@ -2,7 +2,7 @@
 """Recreate the FIN-bench-v2 Finnish chart (mean over 12 tasks per model) and add the Swedish prelude-base result.
 
 Finnish numbers are Sampo Pyysalo's table (acc_norm 5-shot, f1 for SQuAD, max over 5 prompts per task).
-Swedish numbers come from results/prelude-base-anneal2t-it1192093/results.json (same aggregation).
+Swedish numbers come from results/<model>/results.json (same aggregation).
 Llama-Poro-2-8B-Instruct is omitted: its row in the pasted table has only 5 of 12 values.
 """
 import json
@@ -34,16 +34,30 @@ FI = {
     "BSC-LT/salamandra-7b": [0.5636, 0.5033, 0.7923, 0.71, 0.7571, 0.638, 0.7895, 0.59, 0.3378, 0.96, 0.748, 0.3317],
 }
 # Swedish: max over p0-p4 per task, same order as TASKS
-res = json.load(open(ROOT / "results/prelude-base-anneal2t-it1192093/results.json"))["results"]
 SV_KEYS = ["arc_challenge_sv_mcf_svbv2", "belebele_swe_Latn_mcf_svbv2", "finbench_analogies_sv_mcf_svbv2",
            "finbench_emotions_1k_sv_mcf_svbv2", "finbench_general_knowledge_sv_mcf_svbv2",
            "finbench_hhh_alignment_sv_mcf_svbv2", "finbench_similarities_abstraction_sv_mcf_svbv2",
            "goldenswag_mt_sv_cf_svbv2", "ogx_truthfulqax_mc1_sv_svbv2", "scandisent_sv_mcf_svbv2",
            "sib200_sv_mcf_svbv2", "squad_sv_gen_svbv2"]
-SV = []
-for k in SV_KEYS:
-    m = "f1,none" if k.startswith("squad") else "acc_norm,none"
-    SV.append(max(res[f"{k}_p{i}"][m] for i in range(5)))
+def sv_scores(path):
+    res = json.load(open(path))["results"]
+    return [max(res[f"{k}_p{i}"]["f1,none" if k.startswith("squad") else "acc_norm,none"] for i in range(5)) for k in SV_KEYS]
+SV_DIR = ROOT / "results"
+SV_LABELS = {  # dir -> display name
+    "prelude-base-anneal2t-it1192093": "openeurollm/prelude-base (anneal2t, it. 1192093)",
+    "prelude-base-anneal300b-it0989075": "prelude-base (anneal300b, it. 989075)",
+    "prelude-base-pre-anneal-it0953312": "prelude-base (pre-anneal, it. 953312)",
+    "apertus-8b-2509": "swiss-ai/Apertus-8B-2509", "olmo-3-1025-7b": "allenai/Olmo-3-1025-7B",
+    "olmo-2-1124-7b": "allenai/OLMo-2-1124-7B", "salamandra-7b": "BSC-LT/salamandra-7b",
+    "marin-8b-base": "marin-community/marin-8b-base", "qwen3-8b-base": "Qwen/Qwen3-8B-Base", "qwen2.5-7b": "Qwen/Qwen2.5-7B",
+}
+SVM = {}
+for d, name in SV_LABELS.items():
+    p = SV_DIR / d / "results.json"
+    if p.exists():
+        try: SVM[name] = sv_scores(p)
+        except KeyError: print("incomplete, skipped:", d)
+SV = SVM[SV_LABELS["prelude-base-anneal2t-it1192093"]]
 
 INK, MUTED, GRID, BG = "#1f2328", "#656d76", "#e4e7eb", "#ffffff"
 C_TURKU, C_OTHER, C_FI_PRELUDE, C_SV = "#9cc3ef", "#8b95a5", "#2f6db5", "#e08a1e"
@@ -51,26 +65,27 @@ plt.rcParams.update({"font.family": "sans-serif", "axes.edgecolor": MUTED, "text
                      "axes.labelcolor": INK, "xtick.color": INK, "ytick.color": MUTED})
 
 # ---------------------------------------------------------------- chart 1: mean over tasks per model
-names = list(FI) + ["openeurollm/prelude-base (Swedish)"]
-vals = [float(np.mean(v)) for v in FI.values()] + [float(np.mean(SV))]
+sv_sorted = sorted(SVM.items(), key=lambda kv: np.mean(kv[1]))
+names = list(FI) + [n.split("/")[-1] + " (sv)" for n, _ in sv_sorted]
+vals = [float(np.mean(v)) for v in FI.values()] + [float(np.mean(v)) for _, v in sv_sorted]
 cols = []
 for n in names:
     if n.startswith("TurkuNLP"):
         cols.append(C_TURKU)
-    elif n.startswith("openeurollm/prelude-base"):
+    elif n.endswith("(sv)"):
         cols.append(C_SV)
     elif n.startswith("openeurollm/prelude"):
         cols.append(C_FI_PRELUDE)
     else:
         cols.append(C_OTHER)
 
-fig, ax = plt.subplots(figsize=(12.5, 7.2), dpi=160)
+fig, ax = plt.subplots(figsize=(15, 9), dpi=160)
 fig.patch.set_facecolor(BG)
 ax.set_facecolor(BG)
 x = np.arange(len(names))
 bars = ax.bar(x, vals, width=0.68, color=cols, zorder=3)
 for b, n in zip(bars, names):
-    if "prelude" in n:
+    if "prelude" in n or n.endswith("(sv)"):
         ax.text(b.get_x() + b.get_width() / 2, b.get_height() + 0.008, f"{b.get_height():.3f}",
                 ha="center", va="bottom", fontsize=9.5, color=INK, fontweight="bold")
 ax.set_ylim(0, 0.9)
@@ -84,20 +99,20 @@ ax.set_xticks(x)
 ax.set_xticklabels(names, rotation=40, ha="right", rotation_mode="anchor", fontsize=9.5)
 ax.set_ylabel("Mean score over 12 tasks (5-shot, max over 5 prompts)")
 ax.set_title("FIN-bench-v2 (Finnish) and the Swedish port", loc="left", fontsize=15, fontweight="bold", pad=34)
-fig.text(0.075, 0.905, "Mean of acc_norm (SQuAD: F1) over 12 tasks. Blue = Finnish suite; orange = Swedish suite.",
+fig.text(0.075, 0.915, "Mean of acc_norm (SQuAD: F1) over 12 tasks. Blue = Finnish suite; orange = Swedish suite.",
          fontsize=10, color=MUTED)
 from matplotlib.patches import Patch
 ax.legend(handles=[Patch(color=C_TURKU, label="TurkuNLP GPT-3 Finnish (Finnish)"),
                    Patch(color=C_OTHER, label="Other models (Finnish)"),
                    Patch(color=C_FI_PRELUDE, label="prelude (Finnish)"),
-                   Patch(color=C_SV, label="prelude-base, anneal2t it. 1192093 (Swedish)")],
+                   Patch(color=C_SV, label="Swedish suite (this port)")],
           loc="upper left", frameon=False, fontsize=9.5)
 fig.text(0.075, 0.012,
-         "Caveats: Swedish was run on one checkpoint (prelude-base, anneal2t iter 1192093), not necessarily the same one as the Finnish 'prelude' row. "
+         "Caveats: Swedish prelude-base rows are three checkpoints; the Finnish 'prelude' row may be another one. Gated models (EuroLLM, GPT-SW3, Gemma) not run. "
          "Swedish SQuAD = 1000 items, answer-in-context filtered;\nSwedish analogies partly rebuilt; GoldenSwag/ARC/TruthfulQA are unreviewed machine translations. "
          "Llama-Poro-2-8B-Instruct omitted (only 5 of 12 task values were in the table).",
          fontsize=7.8, color=MUTED, va="bottom")
-fig.subplots_adjust(left=0.075, right=0.985, top=0.86, bottom=0.30)
+fig.subplots_adjust(left=0.075, right=0.985, top=0.88, bottom=0.30)
 fig.savefig(ROOT / "docs/chart_finnish_vs_swedish.png", facecolor=BG)
 plt.close(fig)
 
