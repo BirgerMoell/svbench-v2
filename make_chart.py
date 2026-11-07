@@ -49,7 +49,7 @@ SV_LABELS = {  # dir -> display name
     "prelude-base-pre-anneal-it0953312": "prelude-base (pre-anneal, it. 953312)",
     "apertus-8b-2509": "swiss-ai/Apertus-8B-2509", "olmo-3-1025-7b": "allenai/Olmo-3-1025-7B",
     "olmo-2-1124-7b": "allenai/OLMo-2-1124-7B", "salamandra-7b": "BSC-LT/salamandra-7b",
-    "marin-8b-base": "marin-community/marin-8b-base", "qwen3-8b-base": "Qwen/Qwen3-8B-Base", "qwen2.5-7b": "Qwen/Qwen2.5-7B",
+    "marin-8b-base": "marin-community/marin-8b-base", "gemma-4-12b": "google/gemma-4-12b", "qwen3-8b-base": "Qwen/Qwen3-8B-Base", "qwen2.5-7b": "Qwen/Qwen2.5-7B",
 }
 SVM = {}
 for d, name in SV_LABELS.items():
@@ -108,7 +108,7 @@ ax.legend(handles=[Patch(color=C_TURKU, label="TurkuNLP GPT-3 Finnish (Finnish)"
                    Patch(color=C_SV, label="Swedish suite (this port)")],
           loc="upper left", frameon=False, fontsize=9.5)
 fig.text(0.075, 0.012,
-         "Caveats: Swedish prelude-base rows are three checkpoints; the Finnish 'prelude' row may be another one. Gated models (EuroLLM, GPT-SW3, Gemma) not run. "
+         "Caveats: Swedish prelude-base rows are three checkpoints; the Finnish 'prelude' row may be another one. EuroLLM and GPT-SW3 not run. Gemma 4: newer transformers, 8k context. "
          "Swedish SQuAD = 1000 items, answer-in-context filtered;\nSwedish analogies partly rebuilt; GoldenSwag/ARC/TruthfulQA are unreviewed machine translations. "
          "Llama-Poro-2-8B-Instruct omitted (only 5 of 12 task values were in the table).",
          fontsize=7.8, color=MUTED, va="bottom")

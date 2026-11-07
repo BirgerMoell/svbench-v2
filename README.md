@@ -9,7 +9,7 @@ Same design: lm-evaluation-harness tasks, five hand-written prompt variants (p0-
 (`aggregate.py` does this).
 
 Status: all 12 tasks have configs and data, and load and run end to end with lm-eval 0.4.9.1 using the `dummy` model
-(prompts rendered and checked by eye). Nine base models/checkpoints have been evaluated (results below and on the [results page](https://birgermoell.github.io/svbench-v2/)).
+(prompts rendered and checked by eye). Eleven base models/checkpoints have been evaluated (results below and on the [results page](https://birgermoell.github.io/svbench-v2/)).
 
 ## Results (mean over 12 tasks, max over 5 prompts, 5-shot)
 
@@ -20,14 +20,21 @@ Status: all 12 tasks have configs and data, and load and run end to end with lm-
 | openeurollm/prelude-base, anneal300b iter_0989075 | 0.778 |
 | swiss-ai/Apertus-8B-2509 | 0.764 |
 | Qwen/Qwen2.5-7B | 0.763 |
+| google/gemma-4-12b | 0.750 |
 | openeurollm/prelude-base, pre-anneal iter_0953312 | 0.718 |
 | BSC-LT/salamandra-7b | 0.664 |
 | marin-community/marin-8b-base | 0.654 |
 | allenai/OLMo-2-1124-7B | 0.568 |
+| allenai/Olmo-3-1025-7B | 0.526 |
 
 Raw per-prompt results are in `results/<model>/results.json`; `swedish_results.tsv` has the per-task table.
 Single runs, SQuAD on 1000 items, unreviewed prompts and translations: gaps of a point or two are not meaningful.
-Gated models (EuroLLM, GPT-SW3, Gemma) were not run. OLMo-3-7B is pending (its first run hit a GPU out-of-memory error).
+EuroLLM-9B and GPT-SW3 (gated) were not run.
+Gemma 4 12B needed a newer transformers than the container's (5.22.1 instead of 5.2.0), an explicit `max_length=8192`
+(its config does not expose one, so lm-eval defaulted to 2048 and truncated few-shot prompts), and batch size 4
+(large vocabulary); the other models used the container defaults with automatic batch size. OLMo-3-7B's multiple-choice stage was rerun at batch size 8 after a
+GPU out-of-memory error. The SQuAD metric in `tasks/squad/gen/squad_sv_utils.py` is a self-contained copy of the HF
+`squad_metrics` F1/EM (the module was removed in newer transformers); it reproduces the earlier scores exactly.
 
 ## Task coverage
 
@@ -105,7 +112,7 @@ translators are in `translation/out/notes_analogies.txt` and `translation/out/no
    (especially analogies idx 40-129 and the items listed in the notes files).
 2. Consider re-translating general knowledge, HHH and similarities from the English BIG-bench originals
    (`tasksource/bigbench`), which exist for those three tasks and have matching item counts.
-3. Run the gated models (EuroLLM-9B, GPT-SW3, Gemma) and finish OLMo-3-7B.
+3. Run the gated models EuroLLM-9B and GPT-SW3.
 
 ## Running on a Slurm cluster
 
