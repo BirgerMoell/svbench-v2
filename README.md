@@ -9,7 +9,7 @@ Same design: lm-evaluation-harness tasks, five hand-written prompt variants (p0-
 (`aggregate.py` does this).
 
 Status: all 12 tasks have configs and data, and load and run end to end with lm-eval 0.4.9.1 using the `dummy` model
-(prompts rendered and checked by eye). Eleven base models/checkpoints have been evaluated (results below and on the [results page](https://birgermoell.github.io/svbench-v2/)).
+(prompts rendered and checked by eye). Twelve base models/checkpoints have been evaluated (results below and on the [results page](https://birgermoell.github.io/svbench-v2/)).
 
 ## Results (mean over 12 tasks, max over 5 prompts, 5-shot)
 
@@ -17,6 +17,7 @@ Status: all 12 tasks have configs and data, and load and run end to end with lm-
 |---|---|
 | openeurollm/prelude-base, anneal2t_multilingual1_dominant1_iter_1192093 | 0.817 |
 | Qwen/Qwen3-8B-Base | 0.800 |
+| nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Base-BF16 | 0.793 |
 | openeurollm/prelude-base, anneal300b iter_0989075 | 0.778 |
 | swiss-ai/Apertus-8B-2509 | 0.764 |
 | Qwen/Qwen2.5-7B | 0.763 |
@@ -30,6 +31,7 @@ Status: all 12 tasks have configs and data, and load and run end to end with lm-
 Raw per-prompt results are in `results/<model>/results.json`; `swedish_results.tsv` has the per-task table.
 Single runs, SQuAD on 1000 items, unreviewed prompts and translations: gaps of a point or two are not meaningful.
 EuroLLM-9B and GPT-SW3 (gated) were not run.
+Nemotron-3.5-Lightning-30B-A3B-Base (BF16 base model, not the NVFP4 instruct checkpoint, which A100s cannot run through HF; NVIDIA lists no Swedish support) ran on 2 GPUs with the same newer-transformers/8192-context/batch-4 setup as Gemma, and its Mamba layers used the slow PyTorch fallback (`mamba_ssm` is not in the container).
 Gemma 4 12B needed a newer transformers than the container's (5.22.1 instead of 5.2.0), an explicit `max_length=8192`
 (its config does not expose one, so lm-eval defaulted to 2048 and truncated few-shot prompts), and batch size 4
 (large vocabulary); the other models used the container defaults with automatic batch size. OLMo-3-7B's multiple-choice stage was rerun at batch size 8 after a

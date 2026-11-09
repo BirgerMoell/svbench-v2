@@ -49,7 +49,7 @@ SV_LABELS = {  # dir -> display name
     "prelude-base-pre-anneal-it0953312": "prelude-base (pre-anneal, it. 953312)",
     "apertus-8b-2509": "swiss-ai/Apertus-8B-2509", "olmo-3-1025-7b": "allenai/Olmo-3-1025-7B",
     "olmo-2-1124-7b": "allenai/OLMo-2-1124-7B", "salamandra-7b": "BSC-LT/salamandra-7b",
-    "marin-8b-base": "marin-community/marin-8b-base", "gemma-4-12b": "google/gemma-4-12b", "qwen3-8b-base": "Qwen/Qwen3-8B-Base", "qwen2.5-7b": "Qwen/Qwen2.5-7B",
+    "marin-8b-base": "marin-community/marin-8b-base", "gemma-4-12b": "google/gemma-4-12b", "nemotron-3.5-lightning-base": "nvidia/Nemotron-3.5-Lightning-30B-A3B-Base", "qwen3-8b-base": "Qwen/Qwen3-8B-Base", "qwen2.5-7b": "Qwen/Qwen2.5-7B",
 }
 SVM = {}
 for d, name in SV_LABELS.items():

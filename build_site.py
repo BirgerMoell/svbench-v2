@@ -25,7 +25,7 @@ MODELS = {  # dir -> display name
     "prelude-base-anneal300b-it0989075": "openeurollm/prelude-base @ anneal300b iter_0989075",
     "prelude-base-pre-anneal-it0953312": "openeurollm/prelude-base @ pre-anneal iter_0953312",
     "qwen3-8b-base": "Qwen/Qwen3-8B-Base", "apertus-8b-2509": "swiss-ai/Apertus-8B-2509", "qwen2.5-7b": "Qwen/Qwen2.5-7B",
-    "gemma-4-12b": "google/gemma-4-12b", "salamandra-7b": "BSC-LT/salamandra-7b", "marin-8b-base": "marin-community/marin-8b-base",
+    "gemma-4-12b": "google/gemma-4-12b", "nemotron-3.5-lightning-base": "nvidia/Nemotron-3.5-Lightning-30B-A3B-Base", "salamandra-7b": "BSC-LT/salamandra-7b", "marin-8b-base": "marin-community/marin-8b-base",
     "olmo-3-1025-7b": "allenai/Olmo-3-1025-7B", "olmo-2-1124-7b": "allenai/OLMo-2-1124-7B",
 }
 ALL = {}
@@ -94,7 +94,7 @@ Unofficial community port, not affiliated with TurkuNLP.</p>
 <p class="note">Not a like-for-like comparison per task: different datasets, possibly different checkpoints, Swedish analogies were partly rebuilt (Finnish case-ending items have no Swedish equivalent), Swedish SQuAD is filtered to answers found in the context, and GoldenSwag, ARC and TruthfulQA are unreviewed machine translations.</p>
 
 <h2>Leaderboard</h2>
-<p>Max over the five prompts per task, 5-shot; Mean is over the 12 tasks. EuroLLM and GPT-SW3 (gated) were not run. Gemma 4 12B was run with a newer transformers version, an 8192-token context and batch size 4, unlike the other models.</p>
+<p>Max over the five prompts per task, 5-shot; Mean is over the 12 tasks. EuroLLM and GPT-SW3 (gated) were not run. Gemma 4 12B and Nemotron-3.5-Lightning-30B-A3B-Base (BF16 base model; the Mamba layers used the slow PyTorch fallback) were run with a newer transformers version, an 8192-token context and batch size 4 (Nemotron on 2 GPUs), unlike the other models.</p>
 {LEADER}
 
 <h2>Per-prompt detail: prelude-base (anneal2t)</h2>
