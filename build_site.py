@@ -85,6 +85,10 @@ Unofficial community port, not affiliated with TurkuNLP.</p>
 </div>
 <p><a href="https://github.com/BirgerMoell/svbench-v2">Code, data and configs on GitHub</a></p>
 
+<h2>All evaluated models</h2>
+<p>Left: mean over the 12 tasks. Right: every model on every task (max over the five prompts); black outlines mark the best score per task, ties included.</p>
+<img src="chart_swedish_all_models.png" alt="Bar chart of mean score per model and a heatmap of per-task scores for all twelve evaluated models">
+
 <h2>Finnish chart with the Swedish result</h2>
 <p>Bars are the mean of the 12 per-task scores (acc_norm, F1 for SQuAD; max over the five prompts per task, as in the Finnish table). Finnish numbers are from the FIN-bench-v2 authors' table.</p>
 <img src="chart_finnish_vs_swedish.png" alt="Bar chart of mean score over 12 tasks for Finnish models plus Swedish bars for the evaluated models">
